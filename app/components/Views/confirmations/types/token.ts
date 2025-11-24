@@ -49,3 +49,8 @@ export interface Nft {
 export interface AllowedPaymentTokens {
   [chainId: string]: string[];
 }
+
+export interface PreferredPaymentToken {
+  address: Hex;
+  chainId: Hex;
+}

@@ -17,8 +17,7 @@ import { CHAIN_IDS } from '@metamask/transaction-controller';
 export const MusdConversionInfo = () => {
   const route =
     useRoute<RouteProp<Record<string, MusdConversionConfig>, string>>();
-  // TEMP: Will be brought back in subsequent PR.
-  // const preferredPaymentToken = route.params?.preferredPaymentToken;
+  const preferredPaymentToken = route.params?.preferredPaymentToken;
   const outputChainId = route.params?.outputChainId ?? CHAIN_IDS.MAINNET;
   const rawAllowedPaymentTokens = route.params?.allowedPaymentTokens;
 
@@ -63,8 +62,7 @@ export const MusdConversionInfo = () => {
   return (
     <CustomAmountInfo
       allowedPaymentTokens={allowedPaymentTokens}
-      // TEMP: Will be brought back in subsequent PR.
-      // preferredPaymentToken={preferredPaymentToken}
+      preferredPaymentToken={preferredPaymentToken}
     />
   );
 };
