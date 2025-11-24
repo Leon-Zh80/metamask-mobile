@@ -35,7 +35,11 @@ function canonicalize(url: URL): string {
   const sigParams = url.searchParams.get('sig_params');
 
   let params;
-  if (sigParams) {
+  if (sigParams === '') {
+    // Legacy behavior: empty sig_params means only include sig_params itself
+    params = new URLSearchParams();
+    params.append('sig_params', '');
+  } else if (sigParams) {
     const allowedParams = sigParams.split(',');
     params = new URLSearchParams();
 
@@ -47,24 +51,16 @@ function canonicalize(url: URL): string {
     }
 
     params.append('sig_params', sigParams);
+    params.sort();
   } else {
+    // Backward compatibility: sign all params if there are no sig_params
+    // clone the searchParams so we don't edit the original URL when deleting `sig`
     params = new URLSearchParams(url.searchParams);
     params.delete('sig');
+    params.sort();
   }
 
-  const paramsArray = Array.from(params.entries());
-  paramsArray.sort((a, b) => {
-    if (a[0] < b[0]) return -1;
-    if (a[0] > b[0]) return 1;
-    return 0;
-  });
-
-  const queryString = paramsArray
-    .map(
-      ([key, value]) =>
-        `${encodeURIComponent(key)}=${encodeURIComponent(value)}`,
-    )
-    .join('&');
+  const queryString = params.toString();
 
   const result =
     url.origin + url.pathname + (queryString ? `?${queryString}` : '');
