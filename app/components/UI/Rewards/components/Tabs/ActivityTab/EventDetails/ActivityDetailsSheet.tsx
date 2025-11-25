@@ -18,6 +18,7 @@ import {
   PointsEventDto,
   SeasonActivityTypeDto,
 } from '../../../../../../../core/Engine/controllers/rewards-controller/types';
+import { resolveTemplate } from '../../../../utils/formatUtils';
 
 interface ActivityDetailsSheetProps {
   event: PointsEventDto;
@@ -36,22 +37,39 @@ export const ActivityDetailsSheet: React.FC<ActivityDetailsSheetProps> = ({
     (activity) => activity.type === event.type,
   );
 
-  const extraDetails = matchingActivityType ? (
-    <DetailsRow label={strings('rewards.events.description')}>
-      <Text variant={TextVariant.BodySm} color={TextColor.TextAlternative}>
-        {matchingActivityType.description}
-      </Text>
-    </DetailsRow>
-  ) : null;
+  const extraDetails =
+    matchingActivityType && event.payload ? (
+      <DetailsRow label={strings('rewards.events.description')}>
+        <Text variant={TextVariant.BodySm} color={TextColor.TextAlternative}>
+          {resolveTemplate(
+            matchingActivityType.description,
+            event.payload as Record<string, string>,
+          )}
+        </Text>
+      </DetailsRow>
+    ) : null;
 
   switch (event.type) {
     case 'SWAP':
-      return <SwapEventDetails event={event} accountName={accountName} />;
+      return (
+        <SwapEventDetails
+          event={event as Extract<PointsEventDto, { type: 'SWAP' }>}
+          accountName={accountName}
+        />
+      );
     case 'CARD':
-      return <CardEventDetails event={event} accountName={accountName} />;
+      return (
+        <CardEventDetails
+          event={event as Extract<PointsEventDto, { type: 'CARD' }>}
+          accountName={accountName}
+        />
+      );
     case 'MUSD_DEPOSIT':
       return (
-        <MusdDepositEventDetails event={event} accountName={accountName} />
+        <MusdDepositEventDetails
+          event={event as Extract<PointsEventDto, { type: 'MUSD_DEPOSIT' }>}
+          accountName={accountName}
+        />
       );
     default:
       return (

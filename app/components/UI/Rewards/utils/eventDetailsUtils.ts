@@ -15,6 +15,7 @@ import { PerpsEventType } from './eventConstants';
 import {
   formatRewardsMusdDepositPayloadDate,
   getIconName,
+  resolveTemplate,
 } from './formatUtils';
 
 /**
@@ -247,7 +248,10 @@ export const getEventDetails = (
       if (matchingActivityType) {
         return {
           title: matchingActivityType.title,
-          details: matchingActivityType.description,
+          details: resolveTemplate(
+            matchingActivityType.description,
+            event.payload as Record<string, string>,
+          ),
           icon: getIconName(matchingActivityType.icon),
         };
       }

@@ -384,6 +384,7 @@ export type PointsEventDto = BasePointsEventDto &
         type: 'REFERRAL' | 'SIGN_UP_BONUS' | 'LOYALTY_BONUS' | 'ONE_TIME_BONUS';
         payload: null;
       }
+    | { type: string; payload: Record<string, string> | null }
   );
 
 export interface EstimatePointsDto {

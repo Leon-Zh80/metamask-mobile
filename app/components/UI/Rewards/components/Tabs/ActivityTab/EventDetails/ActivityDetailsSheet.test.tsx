@@ -70,6 +70,12 @@ jest.mock('../../../../utils/formatUtils', () => ({
       }).format(date);
     },
   ),
+  resolveTemplate: jest.fn((template: string, values: Record<string, string>) =>
+    template.replace(/\$\{(\w+)\}/g, (match, placeholder) => {
+      const value = values[placeholder as keyof typeof values];
+      return value !== undefined ? String(value) : match;
+    }),
+  ),
 }));
 
 // Mock eventDetailsUtils
@@ -224,18 +230,27 @@ describe('ActivityDetailsSheet', () => {
       expect(screen.getByText('Nov 11, 2025')).toBeTruthy();
     });
 
-    it('renders GenericEventDetails for other event types', () => {
+    it('renders GenericEventDetails with extra description for unspecified type when payload exists', () => {
       const genericEvent: PointsEventDto = {
         ...baseEvent,
         type: 'BRIDGE' as never,
-        payload: null,
+        payload: { txHash: '0xabc123' } as unknown as PointsEventDto['payload'],
       };
+
+      const activityTypesWithTemplate: SeasonActivityTypeDto[] = [
+        {
+          type: 'BRIDGE',
+          title: 'Bridge',
+          description: 'Tx: ${txHash}',
+          icon: 'ArrowRight',
+        },
+      ];
 
       render(
         <ActivityDetailsSheet
           event={genericEvent}
           accountName="Primary"
-          activityTypes={mockActivityTypes}
+          activityTypes={activityTypesWithTemplate}
         />,
       );
 
@@ -243,8 +258,42 @@ describe('ActivityDetailsSheet', () => {
       expect(screen.getByText('Details')).toBeTruthy();
       expect(screen.getByText('Points')).toBeTruthy();
       expect(screen.getByText('Date')).toBeTruthy();
-      // Extra description from matching activity type
-      expect(screen.getByText('Bridge details')).toBeTruthy();
+      // Description row label and resolved template
+      expect(screen.getByText('Description')).toBeTruthy();
+      expect(screen.getByText('Tx: 0xabc123')).toBeTruthy();
+    });
+
+    it('renders GenericEventDetails without extra description when payload is null', () => {
+      const genericEventNoPayload: PointsEventDto = {
+        ...baseEvent,
+        type: 'BRIDGE' as never,
+        payload: null,
+      };
+
+      const activityTypesTemplate: SeasonActivityTypeDto[] = [
+        {
+          type: 'BRIDGE',
+          title: 'Bridge',
+          description: 'Tx: ${txHash}',
+          icon: 'ArrowRight',
+        },
+      ];
+
+      render(
+        <ActivityDetailsSheet
+          event={genericEventNoPayload}
+          accountName="Primary"
+          activityTypes={activityTypesTemplate}
+        />,
+      );
+
+      // Verify GenericEventDetails content is rendered
+      expect(screen.getByText('Details')).toBeTruthy();
+      expect(screen.getByText('Points')).toBeTruthy();
+      expect(screen.getByText('Date')).toBeTruthy();
+      // No Description row since payload is null
+      expect(screen.queryByText('Description')).toBeNull();
+      expect(screen.queryByText('Tx: 0xabc123')).toBeNull();
     });
   });
 

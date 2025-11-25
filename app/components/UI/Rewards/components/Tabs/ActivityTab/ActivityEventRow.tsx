@@ -12,7 +12,12 @@ import {
 } from '@metamask/design-system-react-native';
 import { useNavigation } from '@react-navigation/native';
 import { CaipAssetType, parseCaipAssetType } from '@metamask/utils';
-import { PointsEventDto } from '../../../../../../core/Engine/controllers/rewards-controller/types';
+import {
+  CardEventPayload,
+  PerpsEventPayload,
+  PointsEventDto,
+  SwapEventPayload,
+} from '../../../../../../core/Engine/controllers/rewards-controller/types';
 import { formatRewardsDate, formatNumber } from '../../../utils/formatUtils';
 import { getEventDetails } from '../../../utils/eventDetailsUtils';
 import { getNetworkImageSource } from '../../../../../../util/networks';
@@ -55,14 +60,26 @@ export const ActivityEventRow: React.FC<{
       let assetType: CaipAssetType | undefined;
       let chainId: string | undefined;
 
-      if (event.type === 'SWAP' && event.payload.srcAsset?.type) {
-        assetType = event.payload.srcAsset.type as CaipAssetType;
+      if (
+        event.type === 'SWAP' &&
+        (event.payload as SwapEventPayload).srcAsset?.type
+      ) {
+        assetType = (event.payload as SwapEventPayload).srcAsset
+          .type as CaipAssetType;
         chainId = parseCaipAssetType(assetType).chainId;
-      } else if (event.type === 'PERPS' && event.payload.asset?.type) {
-        assetType = event.payload.asset.type as CaipAssetType;
+      } else if (
+        event.type === 'PERPS' &&
+        (event.payload as PerpsEventPayload).asset?.type
+      ) {
+        assetType = (event.payload as PerpsEventPayload).asset
+          .type as CaipAssetType;
         chainId = parseCaipAssetType(assetType).chainId;
-      } else if (event.type === 'CARD' && event.payload.asset?.type) {
-        assetType = event.payload.asset.type as CaipAssetType;
+      } else if (
+        event.type === 'CARD' &&
+        (event.payload as CardEventPayload).asset?.type
+      ) {
+        assetType = (event.payload as CardEventPayload).asset
+          .type as CaipAssetType;
         chainId = parseCaipAssetType(assetType).chainId;
       } else {
         return;
