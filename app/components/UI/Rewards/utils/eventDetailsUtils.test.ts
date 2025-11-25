@@ -1349,7 +1349,7 @@ describe('eventDetailsUtils', () => {
       ];
       const event: PointsEventDto = {
         ...makeEvent(),
-        payload: { txHash: '0xabc123' } as unknown as PointsEventDto['payload'],
+        payload: { txHash: '0xabc123' } as unknown as Record<string, string>,
       };
 
       const result = getEventDetails(event, activityTypes, TEST_ADDRESS);
