@@ -57,7 +57,8 @@ function canonicalize(url: URL): string {
     params.append('sig_params', sigParams);
     params.sort();
   } else {
-    // Legacy behavior: sig_params not present, sign all params (except sig)
+    // Legacy behavior: sig_params not present
+    // signature is for all params (except sig)
     params = new URLSearchParams(url.searchParams);
     params.delete('sig');
     params.sort();
