@@ -35,14 +35,17 @@ function canonicalize(url: URL): string {
   const sigParams = url.searchParams.get('sig_params');
 
   let params;
+  // Three states: empty string (''), truthy value, or null/undefined
   if (sigParams === '') {
-    // Legacy behavior: empty sig_params means only include sig_params itself
+    // Explicitly empty: sign only sig_params itself (no other params)
     params = new URLSearchParams();
     params.append('sig_params', '');
   } else if (sigParams) {
+    // Selective signing: only include parameters listed in sig_params
     const allowedParams = sigParams.split(',');
     params = new URLSearchParams();
 
+    // Include only the parameters explicitly listed in sig_params
     for (const allowedParam of allowedParams) {
       const values = url.searchParams.getAll(allowedParam);
       for (const value of values) {
@@ -50,11 +53,11 @@ function canonicalize(url: URL): string {
       }
     }
 
+    // Always include sig_params itself in the canonical URL
     params.append('sig_params', sigParams);
     params.sort();
   } else {
-    // Backward compatibility: sign all params if there are no sig_params
-    // clone the searchParams so we don't edit the original URL when deleting `sig`
+    // Legacy behavior: sig_params not present, sign all params (except sig)
     params = new URLSearchParams(url.searchParams);
     params.delete('sig');
     params.sort();
