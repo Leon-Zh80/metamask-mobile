@@ -2,13 +2,17 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 import { useSelector } from 'react-redux';
 import { ActivityEventRow } from './ActivityEventRow';
-import { PointsEventDto } from '../../../../../../core/Engine/controllers/rewards-controller/types';
+import {
+  PointsEventDto,
+  SeasonActivityTypeDto,
+} from '../../../../../../core/Engine/controllers/rewards-controller/types';
 import { formatRewardsDate } from '../../../utils/formatUtils';
 import { getEventDetails } from '../../../utils/eventDetailsUtils';
 import { IconName } from '@metamask/design-system-react-native';
 import TEST_ADDRESS from '../../../../../../constants/address';
 import { useActivityDetailsConfirmAction } from '../../../hooks/useActivityDetailsConfirmAction';
 import { REWARDS_VIEW_SELECTORS } from '../../../Views/RewardsView.constants';
+import { selectSeasonActivityTypes } from '../../../../../../reducers/rewards/selectors';
 
 // Mock the utility functions
 jest.mock('../../../utils/formatUtils', () => ({
@@ -253,11 +257,31 @@ describe('ActivityEventRow', () => {
     icon: IconName.Star,
   };
 
+  const mockActivityTypes: SeasonActivityTypeDto[] = [
+    {
+      type: 'SWAP',
+      title: 'Swap',
+      description: 'Swap desc',
+      icon: 'SwapVertical',
+    },
+    {
+      type: 'CARD',
+      title: 'Card spend',
+      description: 'Spend',
+      icon: 'Card',
+    },
+  ];
+
   beforeEach(() => {
     jest.clearAllMocks();
     mockGetEventDetails.mockReturnValue(defaultEventDetails);
     mockFormatRewardsDate.mockReturnValue('Sep 9, 2025');
-    mockUseSelector.mockReturnValue({});
+    mockUseSelector.mockImplementation((selector) => {
+      if (selector === selectSeasonActivityTypes) {
+        return mockActivityTypes;
+      }
+      return {} as unknown;
+    });
     mockUseActivityDetailsConfirmAction.mockReturnValue(undefined);
   });
 
@@ -459,7 +483,11 @@ describe('ActivityEventRow', () => {
       expect(getByText('Opened position')).toBeOnTheScreen();
       expect(getByText('Opened SHORT BIO position')).toBeOnTheScreen();
       expect(getByText('+1')).toBeOnTheScreen();
-      expect(mockGetEventDetails).toHaveBeenCalledWith(event, TEST_ADDRESS);
+      expect(mockGetEventDetails).toHaveBeenCalledWith(
+        event,
+        mockActivityTypes,
+        TEST_ADDRESS,
+      );
     });
 
     it('should render SIGN_UP_BONUS event correctly', () => {
@@ -562,7 +590,11 @@ describe('ActivityEventRow', () => {
       expect(getByText('43.25 USDC')).toBeOnTheScreen();
       expect(getByText('+15')).toBeOnTheScreen();
       expect(getByText('+50%')).toBeOnTheScreen();
-      expect(mockGetEventDetails).toHaveBeenCalledWith(event, TEST_ADDRESS);
+      expect(mockGetEventDetails).toHaveBeenCalledWith(
+        event,
+        mockActivityTypes,
+        TEST_ADDRESS,
+      );
     });
 
     it('renders PREDICT event without description', () => {
@@ -734,7 +766,11 @@ describe('ActivityEventRow', () => {
 
       // Assert
       expect(getByText('Test Event')).toBeOnTheScreen();
-      expect(mockGetEventDetails).toHaveBeenCalledWith(event, TEST_ADDRESS);
+      expect(mockGetEventDetails).toHaveBeenCalledWith(
+        event,
+        mockActivityTypes,
+        TEST_ADDRESS,
+      );
     });
 
     it('should handle formatRewardsDate returning different date formats', () => {

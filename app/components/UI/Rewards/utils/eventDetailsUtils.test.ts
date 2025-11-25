@@ -4,6 +4,7 @@ import {
   PointsEventDto,
   PointsEventEarnType,
   SwapEventPayload,
+  SeasonActivityTypeDto,
 } from '../../../../core/Engine/controllers/rewards-controller/types';
 import { PerpsEventType } from './eventConstants';
 import {
@@ -48,29 +49,50 @@ jest.mock('../../../../../locales/i18n', () => ({
 }));
 
 // Mock formatUtils
-jest.mock('./formatUtils', () => ({
-  formatNumber: jest.fn((value: number) => value.toString()),
-  formatRewardsMusdDepositPayloadDate: jest.fn(
-    (isoDate: string | undefined) => {
-      // Mock implementation that matches the real implementation behavior
-      if (
-        !isoDate ||
-        typeof isoDate !== 'string' ||
-        !/^\d{4}-\d{2}-\d{2}$/.test(isoDate)
-      ) {
-        return null;
-      }
-      // Mock implementation that formats the date
-      const date = new Date(`${isoDate}T00:00:00Z`);
-      return new Intl.DateTimeFormat('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        timeZone: 'UTC',
-      }).format(date);
-    },
-  ),
-}));
+jest.mock('./formatUtils', () => {
+  const { IconName: IconEnum } = jest.requireActual(
+    '@metamask/design-system-react-native',
+  );
+  return {
+    formatNumber: jest.fn((value: number) => value.toString()),
+    formatRewardsMusdDepositPayloadDate: jest.fn(
+      (isoDate: string | undefined) => {
+        if (
+          !isoDate ||
+          typeof isoDate !== 'string' ||
+          !/^\d{4}-\d{2}-\d{2}$/.test(isoDate)
+        ) {
+          return null;
+        }
+        const date = new Date(`${isoDate}T00:00:00Z`);
+        return new Intl.DateTimeFormat('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          timeZone: 'UTC',
+        }).format(date);
+      },
+    ),
+    getIconName: jest.fn((name: string) => {
+      const map: Record<string, (typeof IconEnum)[keyof typeof IconEnum]> = {
+        Star: IconEnum.Star,
+        ArrowDown: IconEnum.ArrowDown,
+        ArrowUp: IconEnum.ArrowUp,
+        Lock: IconEnum.Lock,
+        Gift: IconEnum.Gift,
+        Edit: IconEnum.Edit,
+        ThumbUp: IconEnum.ThumbUp,
+        Speedometer: IconEnum.Speedometer,
+        Coin: IconEnum.Coin,
+        Card: IconEnum.Card,
+        Candlestick: IconEnum.Candlestick,
+        SwapVertical: IconEnum.SwapVertical,
+        UserCircleAdd: IconEnum.UserCircleAdd,
+      };
+      return map[name] ?? IconEnum.Star;
+    }),
+  };
+});
 
 describe('eventDetailsUtils', () => {
   beforeEach(() => {
@@ -548,7 +570,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return swap details
         expect(result).toEqual({
@@ -574,7 +596,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return perps details
         expect(result).toEqual({
@@ -598,7 +620,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return perps details
         expect(result).toEqual({
@@ -622,7 +644,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return perps details
         expect(result).toEqual({
@@ -646,7 +668,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return perps details
         expect(result).toEqual({
@@ -670,7 +692,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return perps details
         expect(result).toEqual({
@@ -694,7 +716,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return perps details
         expect(result).toEqual({
@@ -717,7 +739,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return undefined details
         expect(result).toEqual({
@@ -739,7 +761,7 @@ describe('eventDetailsUtils', () => {
           },
         });
 
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         expect(result).toEqual({
           title: 'Opened position',
@@ -764,7 +786,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return card spend details
         expect(result).toEqual({
@@ -788,7 +810,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return card spend details with decimals
         expect(result).toEqual({
@@ -803,7 +825,7 @@ describe('eventDetailsUtils', () => {
         const event = createMockEvent('CARD', null);
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return card spend title with undefined details
         expect(result).toEqual({
@@ -818,7 +840,7 @@ describe('eventDetailsUtils', () => {
       it('returns correct details for REFERRAL event', () => {
         const event = createMockEvent('REFERRAL');
 
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         expect(result).toEqual({
           title: 'Referral action',
@@ -832,7 +854,7 @@ describe('eventDetailsUtils', () => {
       it('returns correct details for SIGN_UP_BONUS event', () => {
         const event = createMockEvent('SIGN_UP_BONUS');
 
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         expect(result).toEqual({
           title: 'Sign up bonus',
@@ -844,7 +866,7 @@ describe('eventDetailsUtils', () => {
       it('returns empty details when account name is not provided', () => {
         const event = createMockEvent('SIGN_UP_BONUS');
 
-        const result = getEventDetails(event, undefined);
+        const result = getEventDetails(event, [], undefined);
 
         expect(result).toEqual({
           title: 'Sign up bonus',
@@ -858,7 +880,7 @@ describe('eventDetailsUtils', () => {
       it('returns correct details for LOYALTY_BONUS event', () => {
         const event = createMockEvent('LOYALTY_BONUS');
 
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         expect(result).toEqual({
           title: 'Loyalty bonus',
@@ -872,7 +894,7 @@ describe('eventDetailsUtils', () => {
       it('returns correct details for ONE_TIME_BONUS event', () => {
         const event = createMockEvent('ONE_TIME_BONUS');
 
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         expect(result).toEqual({
           title: 'One-time bonus',
@@ -886,7 +908,7 @@ describe('eventDetailsUtils', () => {
       it('returns correct details for PREDICT event', () => {
         const event = createMockEvent('PREDICT');
 
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         expect(result).toEqual({
           title: 'Prediction',
@@ -904,7 +926,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return mUSD deposit details with formatted date
         expect(result).toEqual({
@@ -921,7 +943,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return mUSD deposit details with formatted date
         expect(result).toEqual({
@@ -936,7 +958,7 @@ describe('eventDetailsUtils', () => {
         const event = createMockEvent('MUSD_DEPOSIT', null);
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return mUSD deposit title with undefined details
         expect(result).toEqual({
@@ -954,7 +976,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return mUSD deposit title with undefined details
         expect(result).toEqual({
@@ -972,7 +994,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return mUSD deposit title with undefined details
         expect(result).toEqual({
@@ -989,7 +1011,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return mUSD deposit title with undefined details
         expect(result).toEqual({
@@ -1006,7 +1028,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return mUSD deposit title with undefined details
         expect(result).toEqual({
@@ -1023,7 +1045,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return mUSD deposit title with undefined details
         expect(result).toEqual({
@@ -1040,7 +1062,7 @@ describe('eventDetailsUtils', () => {
         });
 
         // When getting event details
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         // Then it should return mUSD deposit title with undefined details
         expect(result).toEqual({
@@ -1055,7 +1077,7 @@ describe('eventDetailsUtils', () => {
       it('returns uncategorized event details for unknown type', () => {
         const event = createMockEvent('UNKNOWN_TYPE' as PointsEventDto['type']);
 
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         expect(result).toEqual({
           title: 'Uncategorized event',
@@ -1078,7 +1100,7 @@ describe('eventDetailsUtils', () => {
           },
         });
 
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         expect(result).toEqual({
           title: 'Opened position',
@@ -1099,7 +1121,7 @@ describe('eventDetailsUtils', () => {
           },
         });
 
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         expect(result).toEqual({
           title: 'Opened position',
@@ -1120,7 +1142,7 @@ describe('eventDetailsUtils', () => {
           },
         });
 
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         expect(result).toEqual({
           title: 'Opened position',
@@ -1141,7 +1163,7 @@ describe('eventDetailsUtils', () => {
           },
         });
 
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         expect(result).toEqual({
           title: 'Opened position',
@@ -1162,7 +1184,7 @@ describe('eventDetailsUtils', () => {
           },
         });
 
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         expect(result).toEqual({
           title: 'Opened position',
@@ -1187,7 +1209,7 @@ describe('eventDetailsUtils', () => {
           },
         });
 
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         expect(result).toEqual({
           title: 'Swap',
@@ -1212,13 +1234,104 @@ describe('eventDetailsUtils', () => {
           },
         });
 
-        const result = getEventDetails(event, TEST_ADDRESS);
+        const result = getEventDetails(event, [], TEST_ADDRESS);
 
         expect(result).toEqual({
           title: 'Swap',
           details: '50 ETH to USDC',
           icon: IconName.SwapVertical,
         });
+      });
+    });
+  });
+
+  describe('Custom activity types', () => {
+    const CUSTOM_TYPE = 'CUSTOM_ACTION' as PointsEventDto['type'];
+
+    const makeCustomActivity = (
+      icon: string,
+      description: string = 'Custom description',
+    ): SeasonActivityTypeDto => ({
+      type: CUSTOM_TYPE as unknown as PointsEventEarnType,
+      title: 'Custom Title',
+      description,
+      icon,
+    });
+
+    const makeEvent = (): PointsEventDto => ({
+      id: 'custom-id',
+      timestamp: new Date('2024-02-01T00:00:00Z'),
+      value: 5,
+      bonus: null,
+      accountAddress: TEST_ADDRESS,
+      updatedAt: new Date('2024-02-01T00:00:00Z'),
+      type: CUSTOM_TYPE as PointsEventEarnType,
+      payload: null,
+    });
+
+    it('uses custom title, description, and icon when activityTypes provides a match', () => {
+      const activityTypes: SeasonActivityTypeDto[] = [
+        makeCustomActivity('Lock'),
+      ];
+      const event = makeEvent();
+
+      const result = getEventDetails(event, activityTypes, TEST_ADDRESS);
+
+      expect(result).toEqual({
+        title: 'Custom Title',
+        details: 'Custom description',
+        icon: IconName.Lock,
+      });
+    });
+
+    it('falls back to Star icon when provided invalid icon name', () => {
+      const activityTypes: SeasonActivityTypeDto[] = [
+        makeCustomActivity('NotARealIcon'),
+      ];
+      const event = makeEvent();
+
+      const result = getEventDetails(event, activityTypes, TEST_ADDRESS);
+
+      expect(result).toEqual({
+        title: 'Custom Title',
+        details: 'Custom description',
+        icon: IconName.Star,
+      });
+    });
+
+    it('returns uncategorized event when no matching activity type is found', () => {
+      const activityTypes: SeasonActivityTypeDto[] = [
+        // Different type that should not match
+        {
+          type: 'OTHER_ACTION' as unknown as PointsEventEarnType,
+          title: 'Other',
+          description: 'Other desc',
+          icon: 'Gift',
+        },
+      ];
+      const event = makeEvent();
+
+      const result = getEventDetails(event, activityTypes, TEST_ADDRESS);
+
+      expect(result).toEqual({
+        title: 'Uncategorized event',
+        details: undefined,
+        icon: IconName.Star,
+      });
+    });
+
+    it('preserves empty description value when provided by activityTypes', () => {
+      const activityTypes: SeasonActivityTypeDto[] = [
+        makeCustomActivity('ArrowDown', ''),
+      ];
+      const event = makeEvent();
+
+      const result = getEventDetails(event, activityTypes, TEST_ADDRESS);
+
+      expect(result).toEqual({
+        title: 'Custom Title',
+        details: '',
+        icon: IconName.ArrowDown,
       });
     });
   });

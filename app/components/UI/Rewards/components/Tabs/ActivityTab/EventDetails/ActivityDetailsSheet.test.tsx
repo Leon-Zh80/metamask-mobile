@@ -10,7 +10,10 @@ import { ButtonVariant } from '@metamask/design-system-react-native';
 import Routes from '../../../../../../../constants/navigation/Routes';
 import { ModalType } from '../../../RewardsBottomSheetModal';
 import TEST_ADDRESS from '../../../../../../../constants/address';
-import { PointsEventDto } from '../../../../../../../core/Engine/controllers/rewards-controller/types';
+import {
+  PointsEventDto,
+  SeasonActivityTypeDto,
+} from '../../../../../../../core/Engine/controllers/rewards-controller/types';
 import { AvatarAccountType } from '../../../../../../../component-library/components/Avatars/Avatar';
 
 // Mock navigation
@@ -37,6 +40,7 @@ jest.mock('../../../../../../../../locales/i18n', () => ({
       'rewards.events.points_base': 'Base',
       'rewards.events.points_boost': 'Boost',
       'rewards.events.points_total': 'Total',
+      'rewards.events.description': 'Description',
       'rewards.events.for_deposit_period': 'For deposit period',
     };
     return t[key] || key;
@@ -94,6 +98,27 @@ describe('ActivityDetailsSheet', () => {
     mockUseSelector.mockReturnValue(AvatarAccountType.JazzIcon);
   });
 
+  const mockActivityTypes: SeasonActivityTypeDto[] = [
+    {
+      type: 'SWAP',
+      title: 'Swap',
+      description: 'Swap desc',
+      icon: 'SwapVertical',
+    },
+    {
+      type: 'CARD',
+      title: 'Card spend',
+      description: 'Spend',
+      icon: 'Card',
+    },
+    {
+      type: 'BRIDGE',
+      title: 'Bridge',
+      description: 'Bridge details',
+      icon: 'ArrowRight',
+    },
+  ];
+
   const baseEvent: PointsEventDto = {
     id: 'test-id',
     timestamp: new Date('2025-09-09T09:09:33.000Z'),
@@ -126,7 +151,13 @@ describe('ActivityDetailsSheet', () => {
         },
       };
 
-      render(<ActivityDetailsSheet event={swapEvent} accountName="Primary" />);
+      render(
+        <ActivityDetailsSheet
+          event={swapEvent}
+          accountName="Primary"
+          activityTypes={mockActivityTypes}
+        />,
+      );
 
       // Verify GenericEventDetails content is rendered (base component)
       expect(screen.getByText('Details')).toBeTruthy();
@@ -151,7 +182,13 @@ describe('ActivityDetailsSheet', () => {
         },
       };
 
-      render(<ActivityDetailsSheet event={cardEvent} accountName="Primary" />);
+      render(
+        <ActivityDetailsSheet
+          event={cardEvent}
+          accountName="Primary"
+          activityTypes={mockActivityTypes}
+        />,
+      );
 
       // Verify GenericEventDetails content is rendered (base component)
       expect(screen.getByText('Details')).toBeTruthy();
@@ -173,7 +210,11 @@ describe('ActivityDetailsSheet', () => {
       };
 
       render(
-        <ActivityDetailsSheet event={musdDepositEvent} accountName="Primary" />,
+        <ActivityDetailsSheet
+          event={musdDepositEvent}
+          accountName="Primary"
+          activityTypes={mockActivityTypes}
+        />,
       );
 
       // Verify GenericEventDetails content is rendered (base component)
@@ -191,13 +232,19 @@ describe('ActivityDetailsSheet', () => {
       };
 
       render(
-        <ActivityDetailsSheet event={genericEvent} accountName="Primary" />,
+        <ActivityDetailsSheet
+          event={genericEvent}
+          accountName="Primary"
+          activityTypes={mockActivityTypes}
+        />,
       );
 
       // Verify GenericEventDetails content is rendered
       expect(screen.getByText('Details')).toBeTruthy();
       expect(screen.getByText('Points')).toBeTruthy();
       expect(screen.getByText('Date')).toBeTruthy();
+      // Extra description from matching activity type
+      expect(screen.getByText('Bridge details')).toBeTruthy();
     });
   });
 
@@ -225,6 +272,7 @@ describe('ActivityDetailsSheet', () => {
 
       openActivityDetailsSheet(mockNavigation, {
         event: testEvent,
+        activityTypes: mockActivityTypes,
         accountName: 'Test Account',
       });
 
@@ -270,6 +318,7 @@ describe('ActivityDetailsSheet', () => {
         event: testEvent,
         accountName: 'Test Account',
         confirmAction: customAction,
+        activityTypes: mockActivityTypes,
       });
 
       // Verify custom action is used
@@ -305,6 +354,7 @@ describe('ActivityDetailsSheet', () => {
       openActivityDetailsSheet(mockNavigation, {
         event: testEvent,
         accountName: 'My Custom Account',
+        activityTypes: mockActivityTypes,
       });
 
       // Get the description prop which is the ActivityDetailsSheet component
@@ -342,6 +392,7 @@ describe('ActivityDetailsSheet', () => {
       expect(() => {
         openActivityDetailsSheet(mockNavigation, {
           event: testEvent,
+          activityTypes: mockActivityTypes,
         });
       }).not.toThrow();
 

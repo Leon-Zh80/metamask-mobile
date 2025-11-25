@@ -454,6 +454,7 @@ export interface SeasonDto {
   startDate: Date;
   endDate: Date;
   tiers: SeasonTierDto[];
+  activityTypes: SeasonActivityTypeDto[];
 }
 
 export interface SeasonStatusBalanceDto {
@@ -576,6 +577,7 @@ export type SeasonDtoState = {
   startDate: number; // timestamp
   endDate: number; // timestamp
   tiers: SeasonTierDtoState[];
+  activityTypes: SeasonActivityTypeDto[];
   lastFetched?: number;
 };
 
@@ -1141,6 +1143,11 @@ export interface SeasonMetadataDto {
    * The tiers for the season
    */
   tiers: SeasonTierDto[];
+
+  /**
+   * Activity types for the season
+   */
+  activityTypes: SeasonActivityTypeDto[];
 }
 
 /**
@@ -1165,3 +1172,30 @@ export interface SeasonStateDto {
    */
   updatedAt: Date;
 }
+
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export type SeasonActivityTypeDto = {
+  /**
+   * The activity type
+   * @example 'SWAP'
+   */
+  type: string;
+
+  /**
+   * The name of the activity type
+   * @example 'Swap'
+   */
+  title: string;
+
+  /**
+   * The description of the activity type
+   * @example 'Stake your M$D to earn points'
+   */
+  description: string;
+
+  /**
+   * The icon for the activity type
+   * @example 'Rocket'
+   */
+  icon: string;
+};

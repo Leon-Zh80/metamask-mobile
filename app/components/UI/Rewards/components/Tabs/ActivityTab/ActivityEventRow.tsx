@@ -28,6 +28,8 @@ import { openActivityDetailsSheet } from './EventDetails/ActivityDetailsSheet';
 import { TouchableOpacity } from 'react-native';
 import { useActivityDetailsConfirmAction } from '../../../hooks/useActivityDetailsConfirmAction';
 import { REWARDS_VIEW_SELECTORS } from '../../../Views/RewardsView.constants';
+import { useSelector } from 'react-redux';
+import { selectSeasonActivityTypes } from '../../../../../../reducers/rewards/selectors';
 
 export const ActivityEventRow: React.FC<{
   event: PointsEventDto;
@@ -35,9 +37,12 @@ export const ActivityEventRow: React.FC<{
   testID?: string;
 }> = ({ event, accountName, testID }) => {
   const navigation = useNavigation();
+  const activityTypes = useSelector(selectSeasonActivityTypes);
+
   const eventDetails = React.useMemo(
-    () => (event ? getEventDetails(event, accountName) : undefined),
-    [event, accountName],
+    () =>
+      event ? getEventDetails(event, activityTypes, accountName) : undefined,
+    [event, accountName, activityTypes],
   );
 
   const confirmAction = useActivityDetailsConfirmAction(event);
@@ -81,6 +86,7 @@ export const ActivityEventRow: React.FC<{
     openActivityDetailsSheet(navigation, {
       event,
       accountName,
+      activityTypes,
       confirmAction,
     });
   };
