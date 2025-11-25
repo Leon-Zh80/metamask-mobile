@@ -43,7 +43,7 @@ export const ActivityDetailsSheet: React.FC<ActivityDetailsSheetProps> = ({
         <Text variant={TextVariant.BodySm} color={TextColor.TextAlternative}>
           {resolveTemplate(
             matchingActivityType.description,
-            event.payload as Record<string, string>,
+            (event.payload ?? {}) as Record<string, string>,
           )}
         </Text>
       </DetailsRow>

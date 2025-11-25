@@ -250,7 +250,7 @@ export const getEventDetails = (
           title: matchingActivityType.title,
           details: resolveTemplate(
             matchingActivityType.description,
-            event.payload as Record<string, string>,
+            (event.payload ?? {}) as Record<string, string>,
           ),
           icon: getIconName(matchingActivityType.icon),
         };

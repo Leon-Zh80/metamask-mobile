@@ -85,6 +85,7 @@ jest.mock('./formatUtils', () => {
         Star: IconEnum.Star,
         ArrowDown: IconEnum.ArrowDown,
         ArrowUp: IconEnum.ArrowUp,
+        ArrowRight: IconEnum.ArrowRight,
         Lock: IconEnum.Lock,
         Gift: IconEnum.Gift,
         Edit: IconEnum.Edit,
@@ -1339,6 +1340,42 @@ describe('eventDetailsUtils', () => {
         title: 'Custom Title',
         details: '',
         icon: IconName.ArrowDown,
+      });
+    });
+
+    it('resolves ${...} tokens in description using payload values', () => {
+      const activityTypes: SeasonActivityTypeDto[] = [
+        makeCustomActivity('Lock', 'Tx: ${txHash}'),
+      ];
+      const event: PointsEventDto = {
+        ...makeEvent(),
+        payload: { txHash: '0xabc123' } as unknown as PointsEventDto['payload'],
+      };
+
+      const result = getEventDetails(event, activityTypes, TEST_ADDRESS);
+
+      expect(result).toEqual({
+        title: 'Custom Title',
+        details: 'Tx: 0xabc123',
+        icon: IconName.Lock,
+      });
+    });
+
+    it('leaves ${...} tokens intact when payload is null', () => {
+      const activityTypes: SeasonActivityTypeDto[] = [
+        makeCustomActivity('ArrowRight', 'Tx: ${txHash}'),
+      ];
+      const event: PointsEventDto = {
+        ...makeEvent(),
+        payload: null,
+      };
+
+      const result = getEventDetails(event, activityTypes, TEST_ADDRESS);
+
+      expect(result).toEqual({
+        title: 'Custom Title',
+        details: 'Tx: ${txHash}',
+        icon: IconName.ArrowRight,
       });
     });
   });
