@@ -73,6 +73,13 @@ jest.mock('./formatUtils', () => {
         }).format(date);
       },
     ),
+    resolveTemplate: jest.fn(
+      (template: string, values: Record<string, string>) =>
+        template.replace(/\$\{(\w+)\}/g, (match, placeholder) => {
+          const value = values[placeholder as keyof typeof values];
+          return value !== undefined ? String(value) : match;
+        }),
+    ),
     getIconName: jest.fn((name: string) => {
       const map: Record<string, (typeof IconEnum)[keyof typeof IconEnum]> = {
         Star: IconEnum.Star,
