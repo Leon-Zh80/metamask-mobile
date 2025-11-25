@@ -3062,7 +3062,7 @@
     "earn": "수익 창출",
     "convert": "Convert",
     "tron": {
-      "daily_resource": "일일 자원",
+      "daily_resource": "Daily resources",
       "bandwidth": "대역폭 포인트",
       "energy": "에너지",
       "daily_resource_description": "TRX를 스테이킹한 양에 따라 매일 일정량으로 지급되는 대역폭 포인트입니다. 매일 600 대역폭 포인트를 무료로 받을 수 있습니다.",
@@ -3130,7 +3130,7 @@
       "show_less": "요약 보기"
     },
     "activity": "{{symbol}} 활동",
-    "disclaimer": "시장 데이터는 CoinGecko 등 복수의 타사 데이터 소스에서 제공됩니다. 이러한 타사 콘텐츠는 정보 제공의 목적으로만 제공되므로 특정 자산의 구매, 판매 또는 사용에 대한 조언으로 취급해서는 안 됩니다. MetaMask는 특정한 목적으로 콘텐츠를 사용하는 것을 권장하지 않으며 그 정확성에 대해서도 책임지지 않습니다."
+    "disclaimer": "Market data is provided by third-party sources like CoinGecko. Data is for informational purposes only. MetaMask is not responsible for its accuracy."
   },
   "account_details": {
     "title": "계정 상세 내역",
@@ -3520,6 +3520,7 @@
     "interaction": "상호작용",
     "contract_deploy": "계약 배포",
     "to_contract": "신규 계약",
+    "mint": "Mint",
     "tx_details_free": "수수료",
     "tx_details_not_available": "이용할 수 없음",
     "smart_contract_interaction": "스마트 계약 인터렉션",
@@ -6996,6 +6997,7 @@
     "low_to_high": "Low to high",
     "apply": "Apply",
     "search_placeholder": "Search tokens, sites, URLs",
+    "cancel": "Cancel",
     "perps": "무기한 선물",
     "predictions": "예측",
     "no_results": "No results found",

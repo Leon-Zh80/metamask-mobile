@@ -3062,7 +3062,7 @@
     "earn": "Dapatkan",
     "convert": "Convert",
     "tron": {
-      "daily_resource": "Sumber daya harian",
+      "daily_resource": "Daily resources",
       "bandwidth": "Bandwidth",
       "energy": "Energi",
       "daily_resource_description": "Ini adalah jatah harian Anda berdasarkan TRX yang Anda stake. Anda mendapatkan 600 bandwidth gratis setiap hari.",
@@ -3130,7 +3130,7 @@
       "show_less": "Ciutkan"
     },
     "activity": "Aktivitas {{symbol}}",
-    "disclaimer": "Data pasar disediakan oleh satu atau beberapa sumber data pihak ketiga, termasuk CoinGecko. Konten pihak ketiga tersebut disediakan semata-mata untuk tujuan informasi dan tidak boleh dianggap sebagai saran untuk membeli, menjual, atau menggunakan aset tertentu. MetaMask tidak menyarankan penggunaan konten ini untuk tujuan tertentu dan tidak bertanggung jawab atas keakuratannya."
+    "disclaimer": "Market data is provided by third-party sources like CoinGecko. Data is for informational purposes only. MetaMask is not responsible for its accuracy."
   },
   "account_details": {
     "title": "Detail Akun",
@@ -3520,6 +3520,7 @@
     "interaction": "Interaksi",
     "contract_deploy": "Penempatan Kontrak",
     "to_contract": "Kontrak Baru",
+    "mint": "Mint",
     "tx_details_free": "Gratis",
     "tx_details_not_available": "Tidak tersedia",
     "smart_contract_interaction": "Interaksi kontrak cerdas",
@@ -6996,6 +6997,7 @@
     "low_to_high": "Low to high",
     "apply": "Apply",
     "search_placeholder": "Search tokens, sites, URLs",
+    "cancel": "Cancel",
     "perps": "Perps",
     "predictions": "Prediksi",
     "no_results": "No results found",

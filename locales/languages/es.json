@@ -3062,7 +3062,7 @@
     "earn": "Ganar",
     "convert": "Convert",
     "tron": {
-      "daily_resource": "Recurso diario",
+      "daily_resource": "Daily resources",
       "bandwidth": "Ancho de banda",
       "energy": "Energía",
       "daily_resource_description": "Esta es tu asignación diaria basada en tus TRX en staking. Obtienes 600 de ancho de banda gratis al día.",
@@ -3130,7 +3130,7 @@
       "show_less": "Mostrar menos"
     },
     "activity": "Actividad de {{symbol}}",
-    "disclaimer": "Los datos de mercado son proporcionados por una o más fuentes de datos de terceros, incluido CoinGecko. Dicho contenido de terceros se proporciona únicamente con fines informativos y no debe tratarse como un consejo para comprar, vender o utilizar ningún activo en particular. MetaMask no sugiere el uso de este contenido para ningún propósito en particular y no es responsable de su precisión."
+    "disclaimer": "Market data is provided by third-party sources like CoinGecko. Data is for informational purposes only. MetaMask is not responsible for its accuracy."
   },
   "account_details": {
     "title": "Detalles de la cuenta",
@@ -3520,6 +3520,7 @@
     "interaction": "Interacción",
     "contract_deploy": "Implementación de contrato",
     "to_contract": "Contrato nuevo",
+    "mint": "Mint",
     "tx_details_free": "Gratis",
     "tx_details_not_available": "No disponible",
     "smart_contract_interaction": "Interacción con el contrato inteligente",
@@ -6996,6 +6997,7 @@
     "low_to_high": "Low to high",
     "apply": "Apply",
     "search_placeholder": "Search tokens, sites, URLs",
+    "cancel": "Cancel",
     "perps": "Perps",
     "predictions": "Predicciones",
     "no_results": "No results found",

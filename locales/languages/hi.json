@@ -65,7 +65,7 @@
     },
     "signed_or_submitted_perps_deposit": {
       "title": "डिपॉज़िट प्रगति में है",
-      "message": "Wait for the last deposit to finish before making another."
+      "message": "जब तक पिछला डिपॉज़िट पूरा न हो जाए, तब तक अगला डिपॉज़िट न करें।"
     },
     "pending_transaction": {
       "title": "पेंडिंग ट्रांसेक्शन",
@@ -99,7 +99,7 @@
     },
     "perps_hardware_account": {
       "title": "वॉलेट सपोर्टेड नहीं है",
-      "message": "Hardware wallets aren't supported.\nSwitch wallets to continue."
+      "message": "हार्डवेयर वॉलेट सपोर्टेड नहीं हैं।\nजारी रखने के लिए वॉलेट बदलें।"
     },
     "burn_address": {
       "message": "आप अपनी एसेट्स एक बर्न एड्रेस पर भेज रहे हैं। यदि आप जारी रखते हैं, तो आप अपनी एसेट्स खो देंगे।",
@@ -941,8 +941,8 @@
     "refresh_balance": "बैलेंस रीफ्रेश करें",
     "add_funds": "फंड जोड़ें",
     "trade_perps": "Trade perps",
-    "trade_perps_description": "Use perps to trade on an asset's future price. Add funds to your perps account to get started",
-    "available": "available to trade",
+    "trade_perps_description": "पर्प्स का उपयोग किसी एसेट फ्यूचर प्राइस पर ट्रेड करने के लिए करें। शुरू करने के लिए अपने पर्प्स अकाउंट में फंड जोड़ें",
+    "available": "ट्रेड करने के लिए उपलब्ध है",
     "deposit_in_progress": "डिपॉज़िट प्रगति में है",
     "withdraw_in_progress": "निकालना प्रोग्रेस में है",
     "multiple_transactions_in_progress": "ट्रांसेक्शन प्रोग्रेस में है",
@@ -1060,7 +1060,7 @@
       "max": "मैक्स",
       "percentage_10": "10%",
       "percentage_25": "25%",
-      "available_balance": "Available Perps balance: {{amount}}",
+      "available_balance": "उपलब्ध पर्प्स बैलेंस: {{amount}}",
       "receive": "प्राप्त करें",
       "provider_fee": "प्रदाता फीस",
       "you_will_receive": "आप प्राप्त करते हैं",
@@ -1113,12 +1113,12 @@
         "invalid_stop_loss": "{{positionType}} पोजीशन के लिए स्टॉप लॉस वर्तमान प्राइस {{direction}} होना चाहिए",
         "liquidation_warning": "पोजीशन लिक्विडेशन प्राइस के करीब है",
         "limit_price_required": "कृपया लिमिट ऑर्डर के लिए एक लिमिट प्राइस निर्धारित करें",
-        "price_required": "Price is required",
+        "price_required": "प्राइस की आवश्यकता है",
         "please_set_a_limit_price": "कृपया एक लिमिट प्राइस सेट करें",
         "limit_price_must_be_set_before_configuring_tpsl": "TP/SL कॉन्फ़िगर करने से पहले लिमिट प्राइस सेट किया जाना चाहिए",
         "only_hyperliquid_usdc": "वर्तमान में केवल हाइपरलिक्विड पर USDC ही भुगतान के लिए समर्थित है",
         "limit_price_far_warning": "लिमिट प्राइस वर्तमान मार्केट प्राइस से बहुत दूर है",
-        "oi_cap_reached": "Open interest cap reached. New positions cannot be opened at this time."
+        "oi_cap_reached": "ओपन इंटरेस्ट की सीमा पूरी हो गई है। इस समय नई पोज़िशन नहीं खोली जा सकती।"
       },
       "error": {
         "placement_failed": "ऑर्डर प्लेसमेंट नहीं हो पाया",
@@ -1176,7 +1176,7 @@
         "set_leverage": "{{leverage}}x सेट करें"
       },
       "type": {
-        "title": "Order type",
+        "title": "ऑर्डर प्रकार",
         "market": {
           "title": "मार्केट",
           "description": "वर्तमान मार्केट प्राइस पर तुरंत निष्पादित करें"
@@ -1253,7 +1253,7 @@
       "no_amount_selected": "कृपया बंद करने के लिए कोई राशि चुनें",
       "order_type_reverted_to_market_order": "मार्केट ऑर्डर में बदल दिया गया",
       "you_need_set_price_limit_order": "लिमिट ऑर्डर के लिए आपको एक प्राइस सेट करना होगा।",
-      "your_pnl_is": "Your P&L is"
+      "your_pnl_is": "आपका P&L है"
     },
     "tpsl": {
       "title": "ऑटो क्लोज़",
@@ -1327,7 +1327,7 @@
         "sizePositive": "आकार एक सकारात्मक संख्या होनी चाहिए",
         "pricePositive": "यदि दिया गया हो तो प्राइस एक सकारात्मक संख्या होनी चाहिए",
         "unknownCoin": "अज्ञात कॉइन: {{coin}}",
-        "limitPriceRequired": "Price is required for limit orders"
+        "limitPriceRequired": "लिमिट ऑर्डर के लिए प्राइस आवश्यक है"
       },
       "networkToggleFailed": "नेटवर्क टॉगल करना नहीं हो पाया: {{error}}",
       "accountBalanceFailed": "अकाउंट बैलेंस प्राप्त करना नहीं हो पाया: {{error}}",
@@ -1341,10 +1341,10 @@
       "assetMappingFailed": "एसेट मैपिंग बनाना नहीं हो पाया",
       "depositFailed": "डिपॉज़िट नहीं हो पाया",
       "orderLeverageReductionFailed": "आप अपनी लीवरेज को कम नहीं कर सकते",
-      "insufficientLiquidity": "Insufficient liquidity to execute order. Try using a limit order or retry in a moment.",
+      "insufficientLiquidity": "ऑर्डर निष्पादित करने के लिए पर्याप्त लिक्विडिटी नहीं है। लिमिट ऑर्डर का उपयोग करके देखें या थोड़ी देर बाद फिर से प्रयास करें।",
       "connectionTimeout": "कनेक्शन का समय समाप्त हो गया। कृपया अपना नेटवर्क जांचें और फिर से प्रयास करें।",
       "connectionFailed": {
-        "title": "Couldn't connect to perps",
+        "title": "पर्प्स से कनेक्ट नहीं हो सका",
         "description": "हम इसे जल्द ही ऑनलाइन लाने के लिए काम कर रहे हैं।",
         "retry": "फिर से प्रयास करें",
         "go_back": "वापस जाएं"
@@ -1429,12 +1429,12 @@
       "position": "पोजीशन",
       "orders": "ऑर्डर",
       "go_to_activity": "अपनी गतिविधि पर जाएं",
-      "recent_trades": "Recent activity",
+      "recent_trades": "हालिया गतिविधि",
       "no_trades": "No recent activity",
-      "trading_24_7": "This asset may be traded 24/7",
-      "expect_more_volatility": "Expect more volatility outside of market hours",
-      "after_hours_trading_banner": "After-hours trading",
-      "pay_attention_to_volatility": "Pay attention to volatility and slippage",
+      "trading_24_7": "यह एसेट 24/7 ट्रेड की जा सकती है",
+      "expect_more_volatility": "मार्केट घंटों के बाहर अधिक उतार-चढ़ाव की उम्मीद करें",
+      "after_hours_trading_banner": "आफ्टर-आवर्स ट्रेडिंग",
+      "pay_attention_to_volatility": "उतार-चढ़ाव और स्लिपेज (slippage) पर ध्यान दें",
       "badge": {
         "experimental": "एक्सपेरिमेंटल",
         "equity": "स्टॉक",
@@ -1494,8 +1494,8 @@
         "content": "एक घंटे का फीस जो ट्रेडर्स के बीच मार्केट प्राइस को संतुलित रखने के लिए लिया जाता है। अगर रेट सकारात्मक है, तो लॉन्ग्स शॉर्ट्स को भुगतान करते हैं; अगर नकारात्मक है, तो शॉर्ट्स लॉन्ग्स को भुगतान करते हैं।"
       },
       "funding_payments": {
-        "title": "Funding payments",
-        "content": "This is the amount you've paid in funding fees since the position was opened. Funding is paid or received every hour to keep the perp price close to the actual token price."
+        "title": "फंडिंग पेमेंट्स",
+        "content": "यह वह राशि है जो आपने पोज़िशन खुलने के बाद से फंडिंग फ़ीस के रूप में चुकाई है। फंडिंग हर घंटे दी या प्राप्त की जाती है ताकि पर्प प्राइस वास्तविक टोकन प्राइस के करीब बनी रहे।"
       },
       "geo_block": {
         "title": "आपके क्षेत्र में पर्प्स उपलब्ध नहीं है",
@@ -1534,14 +1534,14 @@
         "content": "पॉइंट्स वह हैं जिनसे आप ट्रांसेक्शन पूरा करने पर MetaMask रिवार्ड्स कमाते हैं, जैसे जब आप स्वैप, ब्रिज या पर्प्स ट्रेड करते हैं।"
       },
       "market_hours": {
-        "title": "Market hours",
-        "closes_in": "Closes in {{time}}",
-        "content": "You're trading within regular market hours (9:30 am to 4pm ET). When markets are closed, there's risk for wider spreads, price moves, and higher funding rates."
+        "title": "मार्केट आवर्स",
+        "closes_in": "{{time}} में बंद होगा",
+        "content": "आप नियमित मार्केट घंटों (सुबह 9:30 बजे से शाम 4 बजे ET) के भीतर ट्रेड कर रहे हैं। जब मार्केट बंद होते हैं, तो स्प्रेड बढ़ने, प्राइस में उतार-चढ़ाव होने और फंडिंग रेट अधिक होने का जोखिम रहता है।"
       },
       "after_hours_trading": {
-        "title": "After-hours trading",
-        "reopens_in": "Reopens in {{time}}",
-        "content": "You're trading outside of regular market hours (9:30 am to 4pm ET). When markets are closed, there's risk for wider spreads, price moves, and higher funding rates."
+        "title": "आफ्टर-आवर्स ट्रेडिंग",
+        "reopens_in": "{{time}} में फिर से खुलेगा",
+        "content": "आप नियमित मार्केट घंटों (सुबह 9:30 बजे से शाम 4 बजे ET) के बाहर ट्रेड कर रहे हैं। जब मार्केट बंद होते हैं, तो स्प्रेड बढ़ने, प्राइस में उतार-चढ़ाव होने और फंडिंग रेट अधिक होने का जोखिम रहता है।"
       }
     },
     "connection": {
@@ -1581,13 +1581,13 @@
       "no_activity": "हाल ही में कोई गतिविधि नहीं",
       "see_all": "सभी को देखें",
       "positions": "आपकी पोज़िशन्स",
-      "orders": "Your orders",
+      "orders": "आपके ऑर्डर",
       "perps": "पर्प्स",
       "all": "सभी",
-      "crypto": "Explore crypto",
+      "crypto": "क्रिप्टो एक्सप्लोर करें",
       "stocks": "स्टॉक्स",
       "commodities": "कमोडिटीज़",
-      "stocks_and_commodities": "Explore stocks and commodities",
+      "stocks_and_commodities": "स्टॉक्स और कमोडिटीज़ एक्सप्लोर करें",
       "tabs": {
         "all": "सभी",
         "crypto": "क्रिप्टो",
@@ -1636,8 +1636,8 @@
       "error_message": "{{count}} ऑर्डर(र्स) कैंसिल करना नहीं हो पाया"
     },
     "crossMargin": {
-      "title": "Cross Margin Not Supported",
-      "message": "MetaMask Perps only support trading with isolated margin. You need to first close your cross margin position before you can trade on MetaMask.",
+      "title": "क्रॉस मार्जिन सपोर्टेड नहीं है",
+      "message": "MetaMask पर्प्स केवल आइसोलेटेड मार्जिन के साथ ट्रेडिंग का सपोर्ट करते हैं। MetaMask पर ट्रेड करने से पहले आपको अपनी क्रॉस मार्जिन पोज़िशन बंद करनी होगी।",
       "dismiss": "समझ गए"
     },
     "sort": {
@@ -1720,7 +1720,7 @@
         "history_will_appear": "आपका ट्रेडिंग इतिहास यहां दिखाई देगा"
       }
     },
-    "risk_disclaimer": "Perpetual contracts are very risky, and you could suddenly and without notice lose your entire investment. You trade entirely at your own risk. Powered by {{source}}. Price chart powered by",
+    "risk_disclaimer": "परपेचुअल कॉन्ट्रैक्ट्स बहुत जोखिम भरे होते हैं, और आप अचानक और बिना किसी चेतावनी के अपनी पूरी निवेश राशि खो सकते हैं। आप पूरी तरह से अपने जोखिम पर ट्रेड करते हैं। {{source}} द्वारा संचालित। प्राइस चार्ट इसके द्वारा संचालित है",
     "tutorial": {
       "continue": "जारी रखें",
       "skip": "छोड़ दें",
@@ -1753,7 +1753,7 @@
         "footer_text": "MetaMask आपके फंड को Arbitrum पर USDC में स्वैप करेगा और बिना किसी अतिरिक्त फीस के उन्हें HyperCore में डिपॉज़िट करेगा।"
       },
       "got_it": "समझ गए",
-      "lets_go": "Let's go",
+      "lets_go": "चलिए शुरू करें",
       "card": {
         "title": "पर्प्स की मूल बातें सीखें"
       }
@@ -1765,13 +1765,13 @@
     "tp_on_chart": "चार्ट पर TP",
     "sl_on_chart": "चार्ट पर SL",
     "pnl_hero_card": {
-      "title": "PnL Hero Card",
-      "header_title": "Share your trade",
+      "title": "PnL हीरो कार्ड",
+      "header_title": "अपना ट्रेड साझा करें",
       "share_button": "साझा करें",
       "share_message_with_referral_code": "MetaMask पर {{asset}} ट्रेड करें। एक्स्ट्रा रिवॉर्ड कमाने के लिए मेरे रेफ़रल कोड {{code}} का उपयोग करके साइन अप करें। {{link}}",
-      "share_message_without_referral_code": "Trade {{asset}} perps on MetaMask.",
-      "share_failed": "Failed to export image",
-      "export_success": "Exported image",
+      "share_message_without_referral_code": "MetaMask पर {{asset}} पर्प्स का ट्रेड करें।",
+      "share_failed": "इमेज एक्सपोर्ट नहीं हो पाया",
+      "export_success": "एक्सपोर्ट किया गया इमेज",
       "referral_code_text": "एक्स्ट्रा रिवॉर्ड कमाने के लिए मेरे रेफ़रल कोड का उपयोग करें।"
     }
   },
@@ -1803,11 +1803,11 @@
       "won": "जीते",
       "lost": "हारे",
       "market_unavailable": "मार्केट अनुपलब्ध है",
-      "amount_on_outcome": "{{amount}} on {{outcome}}",
+      "amount_on_outcome": "{{outcome}} पर {{amount}}",
       "outcome_at_price": "{{price}}¢ पर {{outcome}}",
-      "fee_exemption": "We don't charge any fees on this market.",
-      "ended": "Ended",
-      "resolved_early": "Resolved early"
+      "fee_exemption": "हम इस मार्केट पर कोई शुल्क नहीं लेते।",
+      "ended": "समाप्त हो गया",
+      "resolved_early": "जल्दी समाधान किया गया"
     },
     "tab": {
       "no_predictions_description": "आपके प्रेडिक्शन यहां दिखाई देंगे, जो आपकी हिस्सेदारी और मार्केट की चाल को दिखाएंगे।",
@@ -1823,10 +1823,10 @@
     "sell_position": "सेल पोज़िशन",
     "cash_out": "कैश आउट करें",
     "cash_out_info": "फ़ंड आपके उपलब्ध बैलेंस में जोड़े जाएंगे",
-    "at_price_per_share": "Selling {{size}} shares at {{price}}",
-    "cashout_info": "{{amount}} on {{outcome}} at {{initialPrice}}",
-    "cashout_info_multiple": "{{amount}} on {{outcomeGroupTitle}} • {{outcome}} at {{initialPrice}}",
-    "position_info": "{{initialValue}} on {{outcome}} to win {{shares}}",
+    "at_price_per_share": "{{size}} शेयरों को {{price}} पर बेचा जा रहा है",
+    "cashout_info": "{{initialPrice}} पर {{outcome}} पर {{amount}}",
+    "cashout_info_multiple": "{{outcomeGroupTitle}} पर {{amount}} • {{initialPrice}} पर {{outcome}}",
+    "position_info": "{{shares}} जीतने के लिए {{outcome}} पर {{initialValue}}",
     "buy_yes": "हां",
     "buy_no": "नहीं",
     "outcomes": "परिणाम",
@@ -1854,8 +1854,8 @@
     },
     "search_placeholder": "प्रेडिक्शन मार्केट ढूंढें",
     "search_cancel": "कैंसिल करें",
-    "search_empty_state": "No {{category}} markets available",
-    "search_no_markets_found": "No results found for \"{{q}}\"",
+    "search_empty_state": "कोई भी {{category}} मार्केट उपलब्ध नहीं है",
+    "search_no_markets_found": "\"{{q}}\" के लिए कोई परिणाम नहीं मिला",
     "claim_button": "क्लेम करें",
     "markets_won": "मार्केट जीते",
     "won_markets_text": "{{count}} मार्केट{{s}} जीते",
@@ -1956,10 +1956,10 @@
       "order_failed_generic": "ट्रांसेक्शन नहीं हो पाया। कृपया फिर से प्रयास करें।"
     },
     "withdraw": {
-      "withdrawing": "Withdrawal in progress",
-      "withdrawing_subtitle": "Available in about 1 minute",
-      "withdraw_completed": "Withdrawal complete",
-      "withdraw_completed_subtitle": "{{amount}} USDC moved to your wallet",
+      "withdrawing": "विदड्रॉवल प्रोग्रेस में है",
+      "withdrawing_subtitle": "लगभग 1 मिनट में उपलब्ध होगा",
+      "withdraw_completed": "विदड्रॉवल पूरा हुआ",
+      "withdraw_completed_subtitle": "{{amount}} USDC आपके वॉलेट में भेज दिया गया",
       "error_title": "कुछ गलत हो गया",
       "error_description": "निकालना जारी नहीं हो पाया",
       "try_again": "फिर से प्रयास करें"
@@ -1987,13 +1987,13 @@
       "place_order_failed": "ऑर्डर प्लेस नहीं हो पाया",
       "preview_failed": "ऑर्डर प्रीव्यू नहीं हो पाया",
       "preview_no_order_book": "कोई ऑर्डर बुक नहीं मिली",
-      "preview_no_order_match_buy": "Not enough shares available at market price to place your order right now.",
-      "preview_no_order_match_sell": "There isn't enough demand at market price to cash out right now.",
+      "preview_no_order_match_buy": "मार्केट प्राइस पर अभी आपका ऑर्डर लगाने के लिए पर्याप्त शेयर उपलब्ध नहीं हैं।",
+      "preview_no_order_match_sell": "मार्केट प्राइस पर अभी कैश आउट करने के लिए पर्याप्त माँग नहीं है।",
       "claim_failed": "क्लेम नहीं हो पाया",
       "unknown_error": "एक अज्ञात गड़बड़ी हुई",
       "order_not_fully_filled": "आपका ऑर्डर पूरा नहीं हो पाया",
-      "buy_order_not_fully_filled": "Not enough shares available at market price to place your order right now.",
-      "sell_order_not_fully_filled": "There isn't enough demand at market price to cash out right now."
+      "buy_order_not_fully_filled": "मार्केट प्राइस पर अभी आपका ऑर्डर लगाने के लिए पर्याप्त शेयर उपलब्ध नहीं हैं।",
+      "sell_order_not_fully_filled": "मार्केट प्राइस पर अभी कैश आउट करने के लिए पर्याप्त माँग नहीं है।"
     }
   },
   "receive": {
@@ -3062,7 +3062,7 @@
     "earn": "कमाएं",
     "convert": "Convert",
     "tron": {
-      "daily_resource": "दैनिक संसाधन",
+      "daily_resource": "Daily resources",
       "bandwidth": "बैंडविड्थ",
       "energy": "ऊर्जा",
       "daily_resource_description": "यह आपके स्टेक किए गए TRX के आधार पर आपकी दैनिक अलाउंस है। आपको प्रतिदिन 600 बैंडविड्थ मुफ़्त मिलती है।",
@@ -3096,7 +3096,7 @@
     "send_description": "किसी भी खाते में क्रिप्टो भेजें",
     "receive_description": "क्रिप्टो प्राप्त करें",
     "earn_description": "अपने टोकन पर पुरस्कार अर्जित करें",
-    "perps_description": "Trade perps contracts",
+    "perps_description": "ट्रेड पर्प्स कॉन्ट्रैक्ट्स",
     "predict_description": "रियल-वर्ल्ड इवेंट्स पर ट्रेड करें",
     "chart_time_period": {
       "1d": "आज",
@@ -3130,7 +3130,7 @@
       "show_less": "कम दिखाएं"
     },
     "activity": "{{symbol}} गतिविधि",
-    "disclaimer": "मार्केट डेटा एक या अधिक तृतीय-पक्ष डेटा स्रोतों द्वारा प्रदान किया जाता है, जिसमें कॉइनगेको भी शामिल है। ऐसी तृतीय-पक्ष सामग्री केवल सूचनात्मक उद्देश्यों के लिए प्रदान की जाती है और इसे किसी विशेष संपत्ति को खरीदने, बेचने या उपयोग करने की सलाह के रूप में नहीं माना जाना चाहिए। MetaMask किसी विशेष उद्देश्य के लिए इस सामग्री के उपयोग का सुझाव नहीं देता है और इसकी सटीकता के लिए ज़िम्मेदार नहीं है।"
+    "disclaimer": "Market data is provided by third-party sources like CoinGecko. Data is for informational purposes only. MetaMask is not responsible for its accuracy."
   },
   "account_details": {
     "title": "अकाउंट का विवरण",
@@ -3520,6 +3520,7 @@
     "interaction": "इंटरैक्शन",
     "contract_deploy": "अनुबंध परिनियोजन",
     "to_contract": "नया अनुबंध",
+    "mint": "Mint",
     "tx_details_free": "मुफ्त",
     "tx_details_not_available": "उपलब्ध नहीं है",
     "smart_contract_interaction": "स्मार्ट अनुबंध संपर्क",
@@ -5485,7 +5486,7 @@
     "allowance_reset": "भत्ता रीसेट करें",
     "musd_conversion": {
       "confirmation_button": "Convert to mUSD",
-      "earn_rewards_with": "Earn rewards with mUSD",
+      "earn_rewards_with": "mUSD के साथ रिवॉर्ड्स अर्जित करें",
       "toasts": {
         "in_progress": "mUSD conversion in progress",
         "success": "mUSD conversion succeeded",
@@ -5872,7 +5873,7 @@
     "custom_amount": {
       "buy_button": "क्रिप्टो खरीदें",
       "buy_predict": "प्रेडिक्शंस का उपयोग करने के लिए अपने वॉलेट में फंड्स जोड़ें।",
-      "buy_perps": "Add funds to your wallet to use Perps."
+      "buy_perps": "पर्प्स का उपयोग करने के लिए अपने वॉलेट में फंड्स जोड़ें।"
     },
     "unlimited": "असीमित",
     "all": "सभी",
@@ -6712,13 +6713,13 @@
       "not_supported_hardware_account_title": "अकाउंट सपोर्टेड नहीं है",
       "not_supported_hardware_account_description": "हार्डवेयर वॉलेट एकाउंट्स अभी रिवॉर्ड्स प्राप्त करने के लिए योग्य नहीं हैं। जारी रखने के लिए कृपया किसी अन्य अकाउंट का उपयोग करें।",
       "not_supported_account_type_title": "अकाउंट प्रकार सपोर्टेड नहीं है",
-      "not_supported_account_type_description": "Currently only internal Ethereum and Solana accounts can be enrolled in the Rewards program. Please switch to a different account to proceed.",
+      "not_supported_account_type_description": "वर्तमान में केवल आंतरिक Ethereum और Solana एकाउंट्स को ही रिवॉर्ड्स प्रोग्राम में शामिल किया जा सकता है। आगे बढ़ने के लिए कृपया किसी अन्य अकाउंट पर स्विच करें।",
       "not_supported_confirm_go_back": "वापस जाएं",
       "not_supported_confirm_retry": "फिर से प्रयास करें",
       "auth_fail_title": "प्रमाणीकरण नहीं हो पाया",
       "auth_fail_description": "रिवॉर्ड्स प्रोग्राम के साथ प्रमाणीकरण नहीं हो सका। कृपया अपना कनेक्शन जांचें और फिर से प्रयास करें।",
       "geo_check_fail_title": "ऑप्ट-इन पात्रता निर्धारित नहीं की जा सकती",
-      "geo_check_fail_description": "We cannot determine if your region allows enrolling into the rewards program. Please check your connection and try again.",
+      "geo_check_fail_description": "हम यह निर्धारित नहीं कर सकते कि आपका क्षेत्र रिवॉर्ड्स प्रोग्राम में नामांकन की अनुमति देता है या नहीं। कृपया अपनी कनेक्शन की जाँच करें और दोबारा प्रयास करें।",
       "gtm_title": "रिवॉर्ड्स उपलब्ध हैं",
       "gtm_description": "अपनी गतिविधि के लिए पॉइंट्स कमाएं। \nलेवल बढ़ाएं और रिवॉर्ड्स अनलॉक करें।",
       "gtm_confirm": "शुरू करें",
@@ -6888,13 +6889,13 @@
     },
     "link_account_group": {
       "link_account": "अकाउंट जोड़ें",
-      "tracked": "Enrolled",
-      "untracked": "Not enrolled",
-      "unsupported": "Not supported",
-      "tracked_count": "{{optedIn}}/{{total}} enrolled",
+      "tracked": "नामांकन किया गया",
+      "untracked": "नामांकन नहीं किया गया",
+      "unsupported": "सपोर्ट नहीं किया गया",
+      "tracked_count": "{{optedIn}}/{{total}} नामांकन किया गया",
       "link_account_success": "{{accountName}} सफलतापूर्वक जोड़ा गया",
       "link_account_error": "{{accountName}} के लिए एक या एक से अधिक पता जोड़ना नहीं हो पाया",
-      "link_account_address_error": "Failed to add {{address}}"
+      "link_account_address_error": "{{address}} जोड़ना नहीं हो पाया"
     },
     "active_boosts_title": "सक्रिय बूस्ट्स",
     "season_1": "सीज़न 1",
@@ -6927,7 +6928,7 @@
       "perps_deposit": "फंडेड पर्प्स अकाउंट",
       "predict_claim": "क्लेम किया गया जीत का ईनाम",
       "predict_deposit": "फ़ंड किया गया प्रेडिक्ट अकाउंट",
-      "predict_withdraw": "Withdrawal",
+      "predict_withdraw": "विदड्रॉवल",
       "default": "ट्रांसेक्शन संबंधी विवरण"
     },
     "label": {
@@ -6996,6 +6997,7 @@
     "low_to_high": "Low to high",
     "apply": "Apply",
     "search_placeholder": "Search tokens, sites, URLs",
+    "cancel": "Cancel",
     "perps": "पर्प्स",
     "predictions": "प्रेडिक्शंस",
     "no_results": "No results found",

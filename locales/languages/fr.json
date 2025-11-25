@@ -65,7 +65,7 @@
     },
     "signed_or_submitted_perps_deposit": {
       "title": "Dépôt en cours",
-      "message": "Wait for the last deposit to finish before making another."
+      "message": "Attendez que le dernier dépôt soit traité avant d’en effectuer un autre."
     },
     "pending_transaction": {
       "title": "Transaction en attente",
@@ -99,7 +99,7 @@
     },
     "perps_hardware_account": {
       "title": "Portefeuille non pris en charge",
-      "message": "Hardware wallets aren't supported.\nSwitch wallets to continue."
+      "message": "Les portefeuilles matériels ne sont pas pris en charge.\nChangez de portefeuille pour continuer."
     },
     "burn_address": {
       "message": "Vous envoyez vos actifs vers une adresse de destruction. Si vous continuez, vous perdrez vos actifs.",
@@ -941,8 +941,8 @@
     "refresh_balance": "Actualiser le solde",
     "add_funds": "Ajouter des fonds",
     "trade_perps": "Trade perps",
-    "trade_perps_description": "Use perps to trade on an asset's future price. Add funds to your perps account to get started",
-    "available": "available to trade",
+    "trade_perps_description": "Utilisez les contrats à terme perpétuels pour spéculer sur l’évolution du cours d’un actif. Ajoutez des fonds à votre compte de trading de contrats à terme perpétuels pour commencer",
+    "available": "disponibles pour le trading",
     "deposit_in_progress": "Dépôt en cours",
     "withdraw_in_progress": "Retrait en cours ",
     "multiple_transactions_in_progress": "Transactions en cours",
@@ -1060,7 +1060,7 @@
       "max": "Maximum",
       "percentage_10": "10 %",
       "percentage_25": "25 %",
-      "available_balance": "Available Perps balance: {{amount}}",
+      "available_balance": "Solde disponible sur le compte de trading de contrats à terme perpétuels : {{amount}}",
       "receive": "Recevoir",
       "provider_fee": "Commission du fournisseur",
       "you_will_receive": "Vous recevez",
@@ -1113,12 +1113,12 @@
         "invalid_stop_loss": "Le stop loss doit être {{direction}} au prix actuel pour les positions {{positionType}}",
         "liquidation_warning": "La position est proche du prix de liquidation",
         "limit_price_required": "Veuillez fixer un prix limite pour les ordres à cours limités",
-        "price_required": "Price is required",
+        "price_required": "Le champ « Prix » est obligatoire",
         "please_set_a_limit_price": "Veuillez définir un prix limite",
         "limit_price_must_be_set_before_configuring_tpsl": "Le prix limite doit être défini avant de configurer le TP/SL",
         "only_hyperliquid_usdc": "Seul l’USDC sur Hyperliquid est actuellement pris en charge pour le paiement",
         "limit_price_far_warning": "Le prix limite est bien au-delà ou bien en dessous du prix actuel du marché",
-        "oi_cap_reached": "Open interest cap reached. New positions cannot be opened at this time."
+        "oi_cap_reached": "Le plafond des positions ouvertes a été atteint. Aucune nouvelle position ne peut être ouverte pour le moment."
       },
       "error": {
         "placement_failed": "Échec de la passation de l’ordre",
@@ -1176,7 +1176,7 @@
         "set_leverage": "Régler sur {{leverage}}x"
       },
       "type": {
-        "title": "Order type",
+        "title": "Type d’ordre",
         "market": {
           "title": "Marché",
           "description": "Exécuter immédiatement au prix actuel du marché"
@@ -1253,7 +1253,7 @@
       "no_amount_selected": "Veuillez sélectionner la part de la position que vous souhaitez fermer",
       "order_type_reverted_to_market_order": "Modifié en ordre au cours du marché",
       "you_need_set_price_limit_order": "Vous devez définir un prix pour un ordre à cours limité.",
-      "your_pnl_is": "Your P&L is"
+      "your_pnl_is": "Votre P&L (gain et perte) est de"
     },
     "tpsl": {
       "title": "Fermeture automatique",
@@ -1327,7 +1327,7 @@
         "sizePositive": "La taille doit être une valeur positive",
         "pricePositive": "Le prix doit être un nombre positif s’il est indiqué",
         "unknownCoin": "Jeton fongible inconnu : {{coin}}",
-        "limitPriceRequired": "Price is required for limit orders"
+        "limitPriceRequired": "Le champ « Prix » est obligatoire pour les ordres à cours limité"
       },
       "networkToggleFailed": "L’activation/la désactivation du réseau a échoué : {{error}}",
       "accountBalanceFailed": "Échec de la récupération du solde du compte : {{error}}",
@@ -1341,10 +1341,10 @@
       "assetMappingFailed": "Échec de la création du mappage des actifs",
       "depositFailed": "Le dépôt a échoué",
       "orderLeverageReductionFailed": "Vous ne pouvez pas réduire votre effet de levier",
-      "insufficientLiquidity": "Insufficient liquidity to execute order. Try using a limit order or retry in a moment.",
+      "insufficientLiquidity": "Liquidités insuffisantes pour exécuter l’ordre. Essayez d’utiliser un ordre à cours limité ou réessayez dans quelques instants.",
       "connectionTimeout": "Le délai de connexion a expiré. Veuillez vérifier votre connexion réseau et réessayer.",
       "connectionFailed": {
-        "title": "Couldn't connect to perps",
+        "title": "Impossible de se connecter aux contrats à terme perpétuels",
         "description": "Nous mettons tout en œuvre pour rétablir la connexion.",
         "retry": "Réessayez",
         "go_back": "Retour"
@@ -1429,12 +1429,12 @@
       "position": "Position",
       "orders": "Ordres",
       "go_to_activity": "Accédez à votre activité",
-      "recent_trades": "Recent activity",
+      "recent_trades": "Activité récente",
       "no_trades": "No recent activity",
-      "trading_24_7": "This asset may be traded 24/7",
-      "expect_more_volatility": "Expect more volatility outside of market hours",
-      "after_hours_trading_banner": "After-hours trading",
-      "pay_attention_to_volatility": "Pay attention to volatility and slippage",
+      "trading_24_7": "Cet actif peut être tradé 24 heures sur 24, 7 jours sur 7",
+      "expect_more_volatility": "Attendez-vous à une plus grande volatilité en dehors des heures d’ouverture du marché",
+      "after_hours_trading_banner": "Trading après les heures d’ouverture",
+      "pay_attention_to_volatility": "Faites attention à la volatilité et au slippage",
       "badge": {
         "experimental": "EXPÉRIMENTAL",
         "equity": "ACTIONS",
@@ -1494,8 +1494,8 @@
         "content": "Des frais horaires versés par les traders à d’autres traders afin d’aligner les prix sur ceux appliqués par le marché. Si le taux est positif, les acheteurs paient les vendeurs. S’il est négatif, les vendeurs paient les acheteurs."
       },
       "funding_payments": {
-        "title": "Funding payments",
-        "content": "This is the amount you've paid in funding fees since the position was opened. Funding is paid or received every hour to keep the perp price close to the actual token price."
+        "title": "Taux de financement",
+        "content": "Il s’agit du montant que vous avez payé en frais de financement depuis l’ouverture de la position. Le financement est versé ou reçu toutes les heures afin de maintenir le prix du contrat à terme perpétuel proche du prix réel du jeton."
       },
       "geo_block": {
         "title": "Contrats à terme perpétuels (perps) non disponibles dans votre région",
@@ -1534,14 +1534,14 @@
         "content": "Les points vous permettent de gagner des récompenses MetaMask lorsque vous effectuez des transactions, par exemple lorsque vous échangez, transférez ou tradez des contrats à terme."
       },
       "market_hours": {
-        "title": "Market hours",
-        "closes_in": "Closes in {{time}}",
-        "content": "You're trading within regular market hours (9:30 am to 4pm ET). When markets are closed, there's risk for wider spreads, price moves, and higher funding rates."
+        "title": "Heures d’ouverture du marché",
+        "closes_in": "Ferme à {{time}}",
+        "content": "Vous tradez pendant les heures normales d’ouverture du marché (de 9 h 30 à 16 h, heure de l’Est). Lorsque les marchés sont fermés, il existe un risque de spreads plus importants, de fluctuations de prix et de taux de financement plus élevés."
       },
       "after_hours_trading": {
-        "title": "After-hours trading",
-        "reopens_in": "Reopens in {{time}}",
-        "content": "You're trading outside of regular market hours (9:30 am to 4pm ET). When markets are closed, there's risk for wider spreads, price moves, and higher funding rates."
+        "title": "Trading après les heures d’ouverture",
+        "reopens_in": "Rouvre dans {{time}}",
+        "content": "Vous tradez en dehors des heures normales d’ouverture du marché (de 9 h 30 à 16 h, heure de l’Est). Lorsque les marchés sont fermés, il existe un risque de spreads plus importants, de fluctuations de prix et de taux de financement plus élevés."
       }
     },
     "connection": {
@@ -1581,13 +1581,13 @@
       "no_activity": "Aucune activité récente",
       "see_all": "Tout afficher",
       "positions": "Vos positions",
-      "orders": "Your orders",
+      "orders": "Vos ordres",
       "perps": "Perps",
       "all": "Tous",
-      "crypto": "Explore crypto",
+      "crypto": "Découvrez les cryptomonnaies",
       "stocks": "Actions",
       "commodities": "Matières premières",
-      "stocks_and_commodities": "Explore stocks and commodities",
+      "stocks_and_commodities": "Découvrez les actions et les matières premières",
       "tabs": {
         "all": "Tous",
         "crypto": "Crypto",
@@ -1636,8 +1636,8 @@
       "error_message": "Échec de l’annulation de {{count}} ordre(s)"
     },
     "crossMargin": {
-      "title": "Cross Margin Not Supported",
-      "message": "MetaMask Perps only support trading with isolated margin. You need to first close your cross margin position before you can trade on MetaMask.",
+      "title": "Marge croisée non prise en charge",
+      "message": "MetaMask Perps ne prend en charge que le trading à marge isolée. Vous devez d’abord clôturer votre position à marge croisée avant de pouvoir trader sur MetaMask.",
       "dismiss": "J’ai compris"
     },
     "sort": {
@@ -1720,7 +1720,7 @@
         "history_will_appear": "Votre historique de trading apparaîtra ici"
       }
     },
-    "risk_disclaimer": "Perpetual contracts are very risky, and you could suddenly and without notice lose your entire investment. You trade entirely at your own risk. Powered by {{source}}. Price chart powered by",
+    "risk_disclaimer": "Le trading de contrats à terme perpétuels est risqué et vous pourriez perdre soudainement et sans préavis la totalité de votre investissement. Vous tradez entièrement à vos propres risques. Données de marché fournies par {{source}}. Graphique des prix généré par",
     "tutorial": {
       "continue": "Continuer",
       "skip": "Ignorer",
@@ -1753,7 +1753,7 @@
         "footer_text": "MetaMask échangera vos fonds contre des USDC sur Arbitrum et les déposera sur HyperCore sans frais supplémentaires."
       },
       "got_it": "J’ai compris",
-      "lets_go": "Let's go",
+      "lets_go": "C’est parti",
       "card": {
         "title": "Apprenez les bases des contrats perpétuels"
       }
@@ -1765,13 +1765,13 @@
     "tp_on_chart": "TP sur le graphique",
     "sl_on_chart": "SL sur le graphique",
     "pnl_hero_card": {
-      "title": "PnL Hero Card",
-      "header_title": "Share your trade",
+      "title": "Carte « Héros PNL (gain et perte) »",
+      "header_title": "Partagez votre ordre de bourse",
       "share_button": "Partager",
       "share_message_with_referral_code": "Tradez des contrats à terme perpétuels sur {{asset}} sur MetaMask. Inscrivez-vous à l’aide de mon code de parrainage {{code}} pour obtenir des récompenses supplémentaires. {{link}}",
-      "share_message_without_referral_code": "Trade {{asset}} perps on MetaMask.",
-      "share_failed": "Failed to export image",
-      "export_success": "Exported image",
+      "share_message_without_referral_code": "Tradez des contrats à terme perpétuels sur {{asset}} dans MetaMask.",
+      "share_failed": "L’exportation de l’image a échoué",
+      "export_success": "Image exportée",
       "referral_code_text": "Utilisez mon code de parrainage pour obtenir des récompenses supplémentaires."
     }
   },
@@ -1803,11 +1803,11 @@
       "won": "Gain",
       "lost": "Perte",
       "market_unavailable": "Marché non disponible",
-      "amount_on_outcome": "{{amount}} on {{outcome}}",
+      "amount_on_outcome": "{{amount}} sur {{outcome}}",
       "outcome_at_price": "{{outcome}} à {{price}} ¢",
-      "fee_exemption": "We don't charge any fees on this market.",
-      "ended": "Ended",
-      "resolved_early": "Resolved early"
+      "fee_exemption": "Nous ne facturons aucun frais sur ce marché.",
+      "ended": "Terminé",
+      "resolved_early": "Résolu prématurément"
     },
     "tab": {
       "no_predictions_description": "Vos prédictions apparaîtront ici, indiquant votre mise et l’évolution du marché.",
@@ -1823,10 +1823,10 @@
     "sell_position": "Position de vente",
     "cash_out": "Encaisser",
     "cash_out_info": "Les fonds seront ajoutés à votre solde disponible",
-    "at_price_per_share": "Selling {{size}} shares at {{price}}",
+    "at_price_per_share": "Vente de {{size}} actions au prix de {{price}}",
     "cashout_info": "{{amount}} on {{outcome}} at {{initialPrice}}",
-    "cashout_info_multiple": "{{amount}} on {{outcomeGroupTitle}} • {{outcome}} at {{initialPrice}}",
-    "position_info": "{{initialValue}} on {{outcome}} to win {{shares}}",
+    "cashout_info_multiple": "{{amount}} sur {{outcomeGroupTitle}} • {{outcome}} à {{initialPrice}}",
+    "position_info": "{{initialValue}} sur {{outcome}} pour gagner {{shares}}",
     "buy_yes": "Oui",
     "buy_no": "Non",
     "outcomes": "résultats",
@@ -1854,8 +1854,8 @@
     },
     "search_placeholder": "Rechercher les marchés prédictifs",
     "search_cancel": "Annuler",
-    "search_empty_state": "No {{category}} markets available",
-    "search_no_markets_found": "No results found for \"{{q}}\"",
+    "search_empty_state": "Aucun marché {{category}} disponible",
+    "search_no_markets_found": "Aucun résultat trouvé pour « {{q}} »",
     "claim_button": "Réclamer",
     "markets_won": "Marchés gagnés",
     "won_markets_text": "{{count}} marché{{s}} gagné(s)",
@@ -1957,9 +1957,9 @@
     },
     "withdraw": {
       "withdrawing": "Withdrawal in progress",
-      "withdrawing_subtitle": "Available in about 1 minute",
-      "withdraw_completed": "Withdrawal complete",
-      "withdraw_completed_subtitle": "{{amount}} USDC moved to your wallet",
+      "withdrawing_subtitle": "Disponible dans environ 1 minute",
+      "withdraw_completed": "Retrait effectué",
+      "withdraw_completed_subtitle": "{{amount}} USDC transféré vers votre portefeuille",
       "error_title": "Quelque chose a mal tourné",
       "error_description": "Échec du retrait",
       "try_again": "Réessayez"
@@ -1987,13 +1987,13 @@
       "place_order_failed": "Échec de la passation de l’ordre",
       "preview_failed": "Échec de la prévisualisation de l’ordre",
       "preview_no_order_book": "Aucun carnet d’ordres trouvé",
-      "preview_no_order_match_buy": "Not enough shares available at market price to place your order right now.",
-      "preview_no_order_match_sell": "There isn't enough demand at market price to cash out right now.",
+      "preview_no_order_match_buy": "Il n’y a actuellement pas assez d’actions disponibles au prix du marché pour passer votre ordre.",
+      "preview_no_order_match_sell": "Il n’y a actuellement pas assez de demande au prix du marché pour effectuer un retrait.",
       "claim_failed": "Échec de la réclamation",
       "unknown_error": "Une erreur inconnue est survenue",
       "order_not_fully_filled": "Votre ordre n’a pas pu être exécuté",
-      "buy_order_not_fully_filled": "Not enough shares available at market price to place your order right now.",
-      "sell_order_not_fully_filled": "There isn't enough demand at market price to cash out right now."
+      "buy_order_not_fully_filled": "Il n’y a actuellement pas suffisamment d’actions disponibles au prix du marché pour passer votre ordre.",
+      "sell_order_not_fully_filled": "Il n’y a actuellement pas assez de demande au prix du marché pour effectuer un retrait."
     }
   },
   "receive": {
@@ -3062,7 +3062,7 @@
     "earn": "Gagner",
     "convert": "Convert",
     "tron": {
-      "daily_resource": "Ressource quotidienne",
+      "daily_resource": "Daily resources",
       "bandwidth": "Bande passante",
       "energy": "Énergie",
       "daily_resource_description": "Il s’agit de votre quota quotidien de données, calculé en fonction des TRX stakés. Vous bénéficiez gratuitement de 600 Mo de bande passante chaque jour.",
@@ -3096,7 +3096,7 @@
     "send_description": "Envoyer des crypto-actifs vers n’importe quel compte",
     "receive_description": "Recevoir des crypto-actifs",
     "earn_description": "Gagnez des récompenses avec vos jetons",
-    "perps_description": "Trade perps contracts",
+    "perps_description": "Trader des contrats à terme perpétuels",
     "predict_description": "Spéculez sur des événements réels",
     "chart_time_period": {
       "1d": "Aujourd’hui",
@@ -3130,7 +3130,7 @@
       "show_less": "Afficher moins"
     },
     "activity": "Activité du {{symbol}}",
-    "disclaimer": "Les données de marché sont fournies par un ou plusieurs fournisseurs de données tiers comme CoinGecko. Ce contenu est fourni uniquement à des fins d’information et ne doit pas être considéré comme un conseil d’achat, de vente ou d’utilisation d’un actif particulier. MetaMask ne garantit pas l’exactitude ou la pertinence des informations fournies."
+    "disclaimer": "Market data is provided by third-party sources like CoinGecko. Data is for informational purposes only. MetaMask is not responsible for its accuracy."
   },
   "account_details": {
     "title": "Détails du compte",
@@ -3520,6 +3520,7 @@
     "interaction": "Interaction",
     "contract_deploy": "Déploiement du contrat",
     "to_contract": "Nouveau contrat",
+    "mint": "Mint",
     "tx_details_free": "Gratuit",
     "tx_details_not_available": "Non disponible",
     "smart_contract_interaction": "Interaction de contrats intelligents",
@@ -5485,7 +5486,7 @@
     "allowance_reset": "Réinitialisation de l’allocation",
     "musd_conversion": {
       "confirmation_button": "Convert to mUSD",
-      "earn_rewards_with": "Earn rewards with mUSD",
+      "earn_rewards_with": "Gagnez des récompenses avec mUSD",
       "toasts": {
         "in_progress": "mUSD conversion in progress",
         "success": "mUSD conversion succeeded",
@@ -5872,7 +5873,7 @@
     "custom_amount": {
       "buy_button": "Acheter des cryptomonnaies",
       "buy_predict": "Ajoutez des fonds à votre portefeuille pour utiliser les Prédictions.",
-      "buy_perps": "Add funds to your wallet to use Perps."
+      "buy_perps": "Ajoutez des fonds à votre portefeuille pour utiliser les contrats à terme perpétuels."
     },
     "unlimited": "Illimité",
     "all": "Tout",
@@ -6712,13 +6713,13 @@
       "not_supported_hardware_account_title": "Compte non pris en charge",
       "not_supported_hardware_account_description": "Les comptes de portefeuille matériel ne sont pas encore autorisés à recevoir des récompenses. Veuillez passer à un autre compte pour continuer.",
       "not_supported_account_type_title": "Type de compte non pris en charge",
-      "not_supported_account_type_description": "Currently only internal Ethereum and Solana accounts can be enrolled in the Rewards program. Please switch to a different account to proceed.",
+      "not_supported_account_type_description": "Actuellement, seuls les comptes Ethereum et Solana internes peuvent être inscrits au programme de récompenses. Veuillez passer à un autre compte pour continuer.",
       "not_supported_confirm_go_back": "Retour",
       "not_supported_confirm_retry": "Réessayer",
       "auth_fail_title": "L’authentification a échoué",
       "auth_fail_description": "Impossible d’authentifier le compte auprès du programme de récompenses. Veuillez vérifier votre connexion et réessayer.",
       "geo_check_fail_title": "Impossible de déterminer l’éligibilité à l’adhésion",
-      "geo_check_fail_description": "We cannot determine if your region allows enrolling into the rewards program. Please check your connection and try again.",
+      "geo_check_fail_description": "Nous ne pouvons pas déterminer si votre région autorise l’inscription au programme de récompenses. Veuillez vérifier votre connexion et réessayer.",
       "gtm_title": "Les récompenses sont arrivées",
       "gtm_description": "Gagnez des points pour votre activité. \nProgressez à travers les niveaux pour débloquer des récompenses.",
       "gtm_confirm": "Commencer",
@@ -6888,13 +6889,13 @@
     },
     "link_account_group": {
       "link_account": "Ajouter un compte",
-      "tracked": "Enrolled",
-      "untracked": "Not enrolled",
-      "unsupported": "Not supported",
-      "tracked_count": "{{optedIn}}/{{total}} enrolled",
+      "tracked": "Inscrit",
+      "untracked": "Non inscrit",
+      "unsupported": "Non pris en charge",
+      "tracked_count": "{{optedIn}}/{{total}} inscrit(s)",
       "link_account_success": "{{accountName}} ajouté avec succès",
       "link_account_error": "Échec de l’ajout d’une ou plusieurs adresses pour {{accountName}}",
-      "link_account_address_error": "Failed to add {{address}}"
+      "link_account_address_error": "Échec de l’ajout de {{address}}"
     },
     "active_boosts_title": "Boosts actifs",
     "season_1": "Saison 1",
@@ -6927,7 +6928,7 @@
       "perps_deposit": "Compte approvisionné par des contrats à terme perpétuels (perps)",
       "predict_claim": "Gains réclamés",
       "predict_deposit": "Compte « Predict » financé",
-      "predict_withdraw": "Withdrawal",
+      "predict_withdraw": "Retrait",
       "default": "Détails de la transaction"
     },
     "label": {
@@ -6996,6 +6997,7 @@
     "low_to_high": "Low to high",
     "apply": "Apply",
     "search_placeholder": "Search tokens, sites, URLs",
+    "cancel": "Cancel",
     "perps": "Perps",
     "predictions": "Prédictions",
     "no_results": "No results found",
